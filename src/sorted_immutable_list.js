@@ -4,7 +4,34 @@ const defaultComparator = a => b => {
   return 1;
 };
 
-export default function makeAccumulator({comparator = defaultComparator, unique = true} = {}) {
+const generateComparatorForKey = key => {
+  return a => {
+    const x = key(a);
+
+    return b => {
+      const y = key(b);
+
+      if (x < y) { return -1; }
+      if (x == y) { return 0; }
+      return 1;
+    };
+  }
+};
+
+export default function makeAccumulator({comparator, key, unique = true} = {}) {
+  const uniqueIsFunction = typeof unique === 'function';
+
+  if (comparator && key) {
+    throw new Error("Both comparator and key cannot be defined");
+  }
+
+  if (key) {
+    comparator = generateComparatorForKey(key);
+  }
+  else if (!comparator) {
+    comparator = defaultComparator;
+  }
+
   return (list, value) => {
     if (!list) {
       return [value];
@@ -23,7 +50,7 @@ export default function makeAccumulator({comparator = defaultComparator, unique 
       else if (comparison === 0) {
         if (unique) {
           const newList = list.slice(0);
-          newList[mid] = value;
+          newList[mid] = uniqueIsFunction ? unique(list[mid], value) : value;
           return newList;
         }
         else {
