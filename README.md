@@ -28,11 +28,15 @@ npm install --save sorted-immutable-list
 
 ## Example usage
 
+Get started by importing the module.
+
 ```js
 import makeAccumulator from 'sorted-immutable-list';
+```
 
-// Example that sorts by the 'id' member of the element
+Here's an example that keeps the array sorted by the `id` member of the element.
 
+```js
 const recordAdd = makeAccumulator({key: record => record.id, unique: true});
 
 const a = recordAdd([], {id: 4, name: 'apple'});
@@ -40,15 +44,19 @@ const b = recordAdd(a,  {id: 3, name: 'carrot'});
 const c = recordAdd(b,  {id: 5, name: 'date'});
 const d = recordAdd(c,  {id: 5, name: 'eggplant'});
 // == [ {id: 3, name: 'carrot'}, {id: 4, name: 'apple'}, {id: 5, name: 'eggplant'} ]
+```
 
-// You can use JavaScript's reduce function to add multiple elements:
+Using Javascript's reduce is a nice way to add multiple elements to the array:
 
+```js
 const add = makeAccumulator(); // defaults to unique mode and default comparator
 [20, 10, 30, 10, 5].reduce(add, []);
 // == [5, 10, 20, 30]
+```
 
-// If you have complex logic to determine the sorting key, pass in a comparator function:
+If you have complex logic to determine the sorting key, pass in a comparator function:
 
+```js
 const complexComparator = a => b => {
   if (a.id < b.id) { return -1; }
   if (a.id == b.id) {
@@ -59,9 +67,11 @@ const complexComparator = a => b => {
 };
 
 const complexAdd = makeAccumulator({comparator: complexComparator});
+```
 
-// If you want to merge duplicate items together, pass in a function to unique:
+If you want to merge duplicate items together, pass in a function to unique:
 
+```js
 const mergeAdd = makeAccumulator({
   key: record => record.id,
   unique: (prev, curr) => ({id: prev.id, value: prev.value + curr.value})
