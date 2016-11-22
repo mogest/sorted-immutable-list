@@ -34,15 +34,15 @@ const idComparator = a => b => {
   return 1;
 };
 
-const tupleAdd = makeAccumulator({comparator: idComparator, unique: true});
+const recordAdd = makeAccumulator({comparator: idComparator, unique: true});
 
 // Use it
 
-const a = tupleAdd([], {id: 4, name: 'apple'});
-const b = tupleAdd(a,  {id: 6, name: 'banana'});
-const c = tupleAdd(b,  {id: 3, name: 'carrot'});
-const d = tupleAdd(c,  {id: 5, name: 'date'});
-const e = tupleAdd(d,  {id: 5, name: 'eggplant'});
+const a = recordAdd([], {id: 4, name: 'apple'});
+const b = recordAdd(a,  {id: 6, name: 'banana'});
+const c = recordAdd(b,  {id: 3, name: 'carrot'});
+const d = recordAdd(c,  {id: 5, name: 'date'});
+const e = recordAdd(d,  {id: 5, name: 'eggplant'});
 
 e == [ {id: 3, name: 'carrot'}, {id: 4, name: 'apple'}, {id: 5, name: 'eggplant'}, {id: 6, name: 'banana'} ]
 
