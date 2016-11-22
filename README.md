@@ -78,8 +78,8 @@ object with keys `unique`, `key` and `comparator`.
 
 ### unique argument
 
-`{unique: true}` (default)
-`{unique: false}`
+`{unique: true}` (default)  
+`{unique: false}`  
 `{unique: (prev, curr) => {id: prev.id, value: prev.value + curr.value}}`
 
 By default, `unique` is true.  A unique accumulator will replace an element that
@@ -95,7 +95,7 @@ merge the two elements together.
 
 ### key argument
 
-`{key: element => element}` (default)
+`{key: element => element}` (default)  
 `{key: element => element.id}`
 
 The key argument takes a function that returns the sorting key for an element.
