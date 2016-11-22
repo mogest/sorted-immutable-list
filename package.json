@@ -1,0 +1,42 @@
+{
+  "name": "sorted-immutable-list",
+  "version": "1.0.0",
+  "description": "A sorted immutable list, sorted by a user-supplied comparator",
+  "main": "lib/sorted_immutable_list.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register && markdown-doctest",
+    "test/auto": "mocha --compilers js:babel-core/register --watch -R min",
+    "precompile-lib": "rm -rf lib/ && mkdir -p lib",
+    "compile-lib": "babel -d lib src",
+    "prepublish": "npm run compile-lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mogest/sorted_immutable_list.git"
+  },
+  "keywords": [
+    "sorted",
+    "immutable",
+    "list"
+  ],
+  "author": "Roger Nesbitt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mogest/sorted_immutable_list/issues"
+  },
+  "homepage": "https://github.com/mogest/sorted_immutable_list#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-preset-es2015": "^6.18.0",
+    "markdown-doctest": "^0.9.0",
+    "mocha": "^3.1.2"
+  }
+}
