@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mogest/sorted_immutable_list.git"
+    "url": "git+https://github.com/mogest/sorted-immutable-list.git"
   },
   "keywords": [
     "sorted",
@@ -29,9 +29,9 @@
   "author": "Roger Nesbitt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mogest/sorted_immutable_list/issues"
+    "url": "https://github.com/mogest/sorted-immutable-list/issues"
   },
-  "homepage": "https://github.com/mogest/sorted_immutable_list#readme",
+  "homepage": "https://github.com/mogest/sorted-immutable-list#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
